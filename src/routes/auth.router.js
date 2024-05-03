@@ -5,7 +5,9 @@ import { Router } from 'express';
 const router = Router();
 
 // Importar las funciones de los controladores de autenticación desde 'auth.controller.js'
-import { register, login, logout } from '../controllers/auth.controller.js';
+import { register, login, logout, profile } from '../controllers/auth.controller.js';
+
+import { authRequired } from '../middlewares/validateToken.js';
 
 // Configurar una ruta POST para el registro de usuarios y vincularla con la función 'register' del controlador
 router.post('/register', register);
@@ -15,6 +17,8 @@ router.post('/login', login);
 
 // Configurar una ruta POST para cerrar sesión y vincularla con la función 'logout' del controlador
 router.post('/logout', logout);
+
+router.get('/profile', authRequired, profile);
 
 // Exportar el router para su uso en otros archivos
 export default router;
