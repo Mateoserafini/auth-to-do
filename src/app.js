@@ -24,7 +24,7 @@ app.use(cookieParser());
 
 // Usar las rutas de autenticación en el prefijo '/api'
 app.use('/api', authRoutes);
-app.use(tasksRoutes)
+app.use('/api', tasksRoutes)
 
 // Exportar la aplicación express para su uso en otros archivos
 export default app;
