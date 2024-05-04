@@ -97,12 +97,18 @@ export const logout = async (req, res) => {
     return res.sendStatus(200);
 };
 
-export const profile = async (req, res) =>{
-    
+// Función para manejar la solicitud de obtener el perfil de un usuario autenticado
+export const profile = async (req, res) => {
+    // Busco al usuario autenticado por su ID en la base de datos
     const userFound = await User.findById(req.user.id);
-    
-    if(!userFound) return res.status(400).json({message: "User no found"});
 
+    // Verifico si el usuario fue encontrado
+    if (!userFound) {
+        // Si no se encuentra, devuelvo un error con un mensaje
+        return res.status(400).json({ message: "User not found" });
+    }
+
+    // Devuelvo los datos del usuario en formato JSON
     res.json({
         id: userFound._id,
         username: userFound.username,
