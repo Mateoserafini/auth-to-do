@@ -7,6 +7,8 @@ import morgan from 'morgan';
 // Importo cookieParser, una biblioteca para analizar cookies en las solicitudes
 import cookieParser from 'cookie-parser';
 
+import cors from 'cors'
+
 // Importo las rutas de autenticación desde el archivo 'auth.router.js'
 import authRoutes from './routes/auth.router.js';
 
@@ -15,6 +17,10 @@ import tasksRoutes from './routes/tasks.router.js';
 
 // Creo una instancia de la aplicación express
 const app = express();
+
+app.use(cors({
+    origin: 'http://localhost:5173'
+}));
 
 // Uso morgan en el modo 'dev' para registrar las solicitudes HTTP en la consola
 app.use(morgan('dev'));
