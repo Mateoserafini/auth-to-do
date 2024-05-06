@@ -13,6 +13,10 @@ export const register = async (req, res) => {
     const { email, password, username } = req.body;
 
     try {
+        const userFound = await User.findOne({email});
+        if(userFound)
+            return res.status(400).json(['The email already exists'])
+
         // Encriptar la contraseña con un factor de costo de 10
         const passwordHash = await bcript.hash(password, 10);
 
