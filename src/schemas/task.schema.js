@@ -1,13 +1,11 @@
-
-import { z } from 'zod'
+import { z } from "zod";
 
 export const createTaskSchema = z.object({
-    title: z.string({
-        required_error: 'Title is required'
-    }),
-    description: z.string({
-        required_error: 'Descripion is required'
-    }),
-    date: z.string().datetime().optional()
-
-})
+  title: z.string({
+    required_error: "Title is required",
+  }),
+  description: z.string({
+    required_error: "Descripion is required",
+  }),
+  date: z.string().datetime().optional(),
+});

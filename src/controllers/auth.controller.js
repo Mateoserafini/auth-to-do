@@ -61,13 +61,13 @@ export const login = async (req, res) => {
         const userFound = await User.findOne({ email });
 
         // Si no se encuentra el usuario, responder con un estado 400
-        if (!userFound) return res.status(400).json({ message: "User not found" });
+        if (!userFound) return res.status(400).json(["User not found" ]);
 
         // Comparar la contraseña proporcionada con la almacenada
         const isMatch = await bcript.compare(password, userFound.password);
 
         // Si las contraseñas no coinciden, responder con un estado 400
-        if (!isMatch) return res.status(400).json({ message: 'Incorrect password' });
+        if (!isMatch) return res.status(400).json(['Incorrect password']);
 
         // Crear un token de acceso para el usuario
         const token = await createAccessToken({ id: userFound._id });
@@ -86,7 +86,7 @@ export const login = async (req, res) => {
 
     } catch (error) {
         // Si ocurre un error, responder con un estado 500 y el mensaje del error
-        res.status(500).json({ message: error.message });
+        res.status(500).json({ message: error.message })
     }
 };
 
