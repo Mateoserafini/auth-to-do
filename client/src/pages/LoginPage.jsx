@@ -40,13 +40,17 @@ function LoginPage() {
             {...register("*Password", { required: true })}
             className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2"
             placeholder="*Password"
-          />          {errors.password && (
+          />
+          {errors.password && (
             <p className=" text-red-500">Password is required</p>
           )}
           <button type="submit">Login</button>
         </form>
         <p className=" flex gap-x-2 justify-between">
-          Dont have an account? <Link to="/register" className=" text-sky-500">Sign up</Link>
+          Dont have an account?{" "}
+          <Link to="/register" className=" text-sky-500">
+            Sign up
+          </Link>
         </p>
       </div>
     </div>
