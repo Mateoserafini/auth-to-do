@@ -37,7 +37,7 @@ function LoginPage() {
           {errors.email && <p className=" text-red-500">Email is required</p>}
           <input
             type="text"
-            {...register("*Password", { required: true })}
+            {...register("password", { required: true })}
             className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2"
             placeholder="*Password"
           />
@@ -47,10 +47,7 @@ function LoginPage() {
           <button type="submit">Login</button>
         </form>
         <p className=" flex gap-x-2 justify-between">
-          Dont have an account?{" "}
-          <Link to="/register" className=" text-sky-500">
-            Sign up
-          </Link>
+          Dont have an account? <Link to="/register" className=" text-sky-500">Sign up</Link>
         </p>
       </div>
     </div>

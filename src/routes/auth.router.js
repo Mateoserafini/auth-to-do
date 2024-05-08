@@ -2,7 +2,7 @@
 import { Router } from 'express';
 
 // Importar las funciones de los controladores de autenticación desde 'auth.controller.js'
-import { register, login, logout, profile } from '../controllers/auth.controller.js';
+import { register, login, logout, profile, verifyToken } from '../controllers/auth.controller.js';
 
 //
 import { authRequired } from '../middlewares/validateToken.js';
@@ -23,6 +23,8 @@ router.post('/login', validateSchema(loginSchema), login);
 router.post('/logout', logout);
 
 router.get('/profile', authRequired, profile);
+
+router.get('/verify', verifyToken);
 
 // Exportar el router para su uso en otros archivos
 export default router;

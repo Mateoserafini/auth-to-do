@@ -7,6 +7,9 @@ import bcript from 'bcryptjs';
 // Importar la función para crear tokens de acceso desde 'jwt.js'
 import { createAccessToken } from '../libs/jwt.js';
 
+import jwt from 'jsonwebtoken';
+import { TOKEN_SECRET } from '../config.js';
+
 // Función para manejar el registro de un nuevo usuario
 export const register = async (req, res) => {
     // Obtener email, password y username de la solicitud
@@ -121,3 +124,22 @@ export const profile = async (req, res) => {
         updatedAt: userFound.updatedAt
     });
 };
+
+export const verifyToken = async (req,res) =>{
+    const {token} = req.cookies
+
+    if(!token) return res.status(401).json({message: 'Unauthorized'});
+
+    jwt.verify(token, TOKEN_SECRET, async (err, user) =>{
+
+        if(err) return res.status(401).json({message: 'Unanthorized'});
+        const userFound = await User.findById(user.id);
+        if(!userFound) res.status(401).json({message: 'Unanthorized'});
+
+        return res.json({
+            id: userFound._id,
+            username: userFound.username,
+            email: userFound.email
+        })
+    })
+}
