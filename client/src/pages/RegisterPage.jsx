@@ -58,9 +58,14 @@ function RegisterPage() {
           {errors.password && (
             <p className=" text-red-500">Password is required</p>
           )}
-          <button type="submit" className=" flex gap-x-2 justify-between">Register</button>
+          <button type="submit" className=" flex gap-x-2 justify-between">
+            Register
+          </button>
           <p>
-            Already have an account? {" "}<Link to="/login" className="text-sky-500">Sign in</Link>
+            Already have an account?{" "}
+            <Link to="/login" className="text-sky-500">
+              Sign in
+            </Link>
           </p>
         </form>
       </div>
