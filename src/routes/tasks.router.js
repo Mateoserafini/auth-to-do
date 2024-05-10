@@ -18,7 +18,7 @@ import { createTaskSchema } from '../schemas/task.schema.js'
 router.get('/tasks', authRequired, getTasks);
 
 // Ruta para obtener una tarea específica por su ID
-router.get('/tasks/:id', authRequired, getTask);
+router.get('/task/:id', authRequired, getTask);
 
 // Ruta para crear una nueva tarea
 router.post('/tasks', authRequired, validateSchema(createTaskSchema), createTasks);

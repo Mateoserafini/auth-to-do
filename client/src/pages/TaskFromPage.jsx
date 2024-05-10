@@ -1,20 +1,43 @@
 import { useForm } from "react-hook-form";
 import { useTasks } from "../context/TaskContext";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { useEffect } from "react";
 
 function TaskFromPage() {
-  const { register, handleSubmit } = useForm();
-  const { createTask } = useTasks();
+  const { register, handleSubmit, setValue } = useForm();
+  const { createTask, getTask, updateTasks } = useTasks();
   const navigate = useNavigate();
+  const params = useParams();
+
+  useEffect(() =>{
+    async function loadTask(){
+      if(params.id){
+        const task = await getTask(params.id);
+        console.log(task)
+        setValue('title', task.title)
+        setValue('description', task.description)
+      }
+    }
+    loadTask()
+  },[])
 
   const onSubmit = handleSubmit((data) => {
-    createTask(data);
-    navigate('/tasks');
+    if(params.id){
+      updateTasks(params.id, data)
+    }else{
+      createTask(data)
+    }
+    navigate('/tasks')
   });
 
   return (
     <div className="flex h-[calc(100vh)] items-center justify-center">
       <div className=" bg-zinc-800 max-w-md w-full p-10 rounded-md">
+      <h1 className=" text-2xl font-bold">
+        {
+          params.id ? ('Update Task') : ('Add Task')
+        }
+      </h1>
         <form onSubmit={onSubmit}>
           <input
             type="text"
