@@ -1,18 +1,20 @@
 import { useForm } from "react-hook-form";
 import { useTasks } from "../context/TaskContext";
+import { Navigate, useNavigate } from "react-router-dom";
 
 function TaskFromPage() {
   const { register, handleSubmit } = useForm();
   const { createTask } = useTasks();
+  const navigate = useNavigate();
 
   const onSubmit = handleSubmit((data) => {
     createTask(data);
+    navigate('/tasks');
   });
 
   return (
     <div className="flex h-[calc(100vh)] items-center justify-center">
       <div className=" bg-zinc-800 max-w-md w-full p-10 rounded-md">
-        <h1 className=" text-2xl font-bold">Add tasks</h1>
         <form onSubmit={onSubmit}>
           <input
             type="text"
