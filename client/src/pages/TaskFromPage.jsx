@@ -6,7 +6,7 @@ function TaskFromPage() {
   const { createTask } = useTasks();
 
   const onSubmit = handleSubmit((data) => {
-    createTask(data)
+    createTask(data);
   });
 
   return (
