@@ -32,10 +32,16 @@ function TaskFromPage() {
   },[])
 
   const onSubmit = handleSubmit((data) => {
+    const dataValid ={
+      ...data, 
+      date: data.date ? dayjs.utc(data.date).format() : dayjs.utc().format(),
+    }
+
+
     if(params.id){
-      updateTasks(params.id,{...data, date: dayjs.utc(data.date).format(),})
+      updateTasks(params.id,dataValid)
     }else{
-      createTask({...data, date: dayjs.utc(data.date).format(),})
+      createTask(dataValid)
     }
     navigate('/tasks')
   });
@@ -43,7 +49,7 @@ function TaskFromPage() {
   return (
     <div className="flex h-[calc(100vh)] items-center justify-center">
       <div className=" bg-zinc-800 max-w-md w-full p-10 rounded-md">
-      <h1 className=" text-2xl font-bold">
+      <h1 className=" text-2xl font-bold py-2">
         {
           params.id ? ('Update Task') : ('Add Task')
         }
@@ -68,7 +74,7 @@ function TaskFromPage() {
           <label htmlFor="date">Date</label>
           <input type="date" {...register('date')} className=" w-full bg-zinc-700 text-white px-4 py-2 my-2 rounded-md"
             autoFocus />
-          <button className=" bg-indigo-600 px-4 py-1 rounded-md">Save</button>
+          <button className=" bg-indigo-600 px-4 py-1 my-2 rounded-md">Save</button>
         </form>
       </div>
     </div>
