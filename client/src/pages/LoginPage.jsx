@@ -9,7 +9,7 @@ function LoginPage() {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  
+
   const { signin, isAuthenticated, errors: LoginErrors } = useAuth();
   const navigate = useNavigate();
 

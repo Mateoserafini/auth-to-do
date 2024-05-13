@@ -17,7 +17,7 @@ function App() {
       <TaskProvider>
         <BrowserRouter>
           <main className=" container mx-auto px-10">
-          <NavBar />
+            <NavBar />
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/register" element={<RegisterPage />} />
