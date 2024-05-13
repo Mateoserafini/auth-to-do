@@ -43,7 +43,6 @@ export const getTask = async (req, res) => {
   }
 
   // Respondo con la tarea encontrada en formato JSON
- 
 };
 
 export const deleteTask = async (req, res) => {
