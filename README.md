@@ -13,7 +13,7 @@ Para inicializar el proyecto, sigue estos pasos:
 
 1. Clona el repositorio:
    ```
-   git clone https://github.com/Mateoserafini/auth-to-do
+   git clone https://github.com/Mateoserafini/auth-to-do.git
    ```
 
 2. Backend:
