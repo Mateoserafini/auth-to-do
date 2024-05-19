@@ -64,7 +64,7 @@ function RegisterPage() {
           <p>
             Already have an account?{" "}
             <Link to="/login" className="text-sky-500">
-              Sign in
+              Sign up
             </Link>
           </p>
         </form>

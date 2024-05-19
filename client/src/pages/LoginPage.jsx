@@ -58,7 +58,7 @@ function LoginPage() {
         </form>
         <p>
           Dont have an account?{" "}
-          <Link to="/login" className="text-sky-500">
+          <Link to="/register" className="text-sky-500">
             Sign in
           </Link>
         </p>
